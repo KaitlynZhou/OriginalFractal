@@ -1,23 +1,27 @@
-float leng = 50;
+float leng = 1;
 boolean stopLoop = true;
 float rot = 1;
 color c = color((int)(Math.random()*255), (int)(Math.random()*255), (int)(Math.random()*255));
 public void setup()
 {
-  size(600, 600);
-  //frameRate(20);
+  size(1000, 1000);
+  frameRate(10);
   background(0);
 }
 public void draw()
 {
-  if (leng <= 1000 && stopLoop == false)
+  if (leng <= 5 && stopLoop == false)
   {
-    leng = leng + 2.5;
-  } else if (leng >= 1000)
+    leng = leng + 0.5;
+    rot+=PI/4;
+  } 
+  else if (leng >= 5)
   {
-    leng = 50;
+    leng = -leng;
+    //leng = 1;
+    //rot = - rot;
   }
-  translate(300, 300);
+  translate(500, 375);
   rotate(-PI/2.0);
   sierpinski(0, 0, leng);
   rotate(2*PI/5.0 * rot);
@@ -39,8 +43,15 @@ public void keyPressed() {
   if (key == ' ' && stopLoop == true) {
     stopLoop = false;
   }
+  //if(key == 'x'){
+  //  fill(0);
+  //  stroke(0);
+  //  translate(0,0);
+  //  rotate(PI);
+  //  rect(0,0,1000,1000);
+  //}
   leng = -leng;
-  rot = - rot;
+  //rot = - rot;
   //stopLoop = true;
 }
 public int increment(int increase) {
@@ -53,7 +64,7 @@ public void sierpinski(float x, float y, float len)
   //triangle(x,y,x+len/2,y-len,x+len,y);
   //fill(c, (int)(Math.random()*255), (int)(Math.random()*255));
   scaleShape1(x, y, len);
-  if (len>30)
+  if (len>10)
   {
     sierpinski(x, y, len/2);
     sierpinski(x+len/2, y, len/2);
