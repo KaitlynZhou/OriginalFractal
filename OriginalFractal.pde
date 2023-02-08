@@ -21,7 +21,7 @@ public void draw()
     //leng = 1;
     //rot = - rot;
   }
-  translate(500, 375);
+  translate(500, 500);
   rotate(-PI/2.0);
   sierpinski(0, 0, leng);
   rotate(2*PI/5.0 * rot);
